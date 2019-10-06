@@ -1,5 +1,6 @@
-package io.gakusci.gumichan01.ktorpoc
+package io.gakusci.gumichan01
 
+import io.gakusci.gumichan01.ktorpoc.gakusciModule
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.testing.handleRequest
@@ -10,10 +11,10 @@ import kotlin.test.assertEquals
 class ApplicationTest {
     @Test
     fun testRoot() {
-        withTestApplication {
+        withTestApplication({ gakusciModule() }) {
             handleRequest(HttpMethod.Get, "/").apply {
                 assertEquals(HttpStatusCode.OK, response.status())
-                assertEquals("HELLO WORLD!", response.content)
+                assertEquals("Hello World!", response.content)
             }
         }
     }
