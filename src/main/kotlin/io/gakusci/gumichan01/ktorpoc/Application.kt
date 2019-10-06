@@ -19,7 +19,7 @@ fun main(args: Array<String>): Unit = io.ktor.server.jetty.EngineMain.main(args)
 @Suppress("unused") // Referenced in application.conf
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
-    val client = HttpClient(Apache) {
+    HttpClient(Apache) {
         install(JsonFeature) {
             serializer = GsonSerializer()
         }
