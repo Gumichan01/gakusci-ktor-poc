@@ -12,7 +12,7 @@ import io.ktor.server.jetty.Jetty
 import io.ktor.server.jetty.JettyApplicationEngine
 
 fun main() {
-    val server: JettyApplicationEngine = embeddedServer(Jetty, port = 8082) {
+    val server: JettyApplicationEngine = embeddedServer(Jetty, port = 8080) {
         gakusciModule()
     }
     server.start(wait = true)
