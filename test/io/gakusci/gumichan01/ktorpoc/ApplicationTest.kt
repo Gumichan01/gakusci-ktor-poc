@@ -1,6 +1,5 @@
-package io.gakusci.gumichan01
+package io.gakusci.gumichan01.ktorpoc
 
-import io.gakusci.gumichan01.ktorpoc.gakusciModule
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.testing.handleRequest
