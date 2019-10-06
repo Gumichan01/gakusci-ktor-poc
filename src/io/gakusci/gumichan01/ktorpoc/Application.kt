@@ -1,5 +1,6 @@
 package io.gakusci.gumichan01.ktorpoc
 
+import io.gakusci.gumichan01.ktorpoc.controller.GakusciController
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.log
@@ -23,13 +24,10 @@ fun main() {
 fun Application.gakusciModule() {
     routing {
         get("/") {
-            call.respondText("Hello World!", ContentType.Text.Plain, status = HttpStatusCode.OK)
+            GakusciController().home(call)
         }
-        get("/search/") {
-            val queryKey = "q"
-            val queryValue: String? = call.request.queryParameters[queryKey]
-            log.info("query value: $queryValue")
-            call.respondText("search", ContentType.Text.Plain, status = HttpStatusCode.OK)
+        get("search") {
+            GakusciController().search(call)
         }
     }
 }
