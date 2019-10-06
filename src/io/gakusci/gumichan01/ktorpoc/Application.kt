@@ -9,13 +9,14 @@ import io.ktor.routing.get
 import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.jetty.Jetty
-import io.ktor.server.jetty.JettyApplicationEngine
 
 fun main() {
-    val server: JettyApplicationEngine = embeddedServer(Jetty, port = 8080) {
-        gakusciModule()
-    }
-    server.start(wait = true)
+    embeddedServer(
+        Jetty,
+        watchPaths = listOf("gakusci-ktor-poc"),
+        port = 8080,
+        module = Application::gakusciModule
+    ).apply { start(wait = true) }
 }
 
 fun Application.gakusciModule() {
