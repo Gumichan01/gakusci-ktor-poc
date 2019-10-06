@@ -1,56 +1,21 @@
-package io.gakusci.gumichan01
+package io.gakusci.gumichan01.ktorpoc
 
-import io.ktor.application.*
-import io.ktor.response.*
-import io.ktor.request.*
-import io.ktor.client.*
-import io.ktor.client.engine.apache.*
-import io.ktor.client.features.json.*
-import io.ktor.client.request.*
-import kotlinx.coroutines.*
-import io.ktor.routing.*
-import io.ktor.http.*
-import com.fasterxml.jackson.databind.*
-import io.ktor.jackson.*
-import io.ktor.features.*
+import io.ktor.application.call
+import io.ktor.http.ContentType
+import io.ktor.response.respondText
+import io.ktor.routing.get
+import io.ktor.routing.routing
+import io.ktor.server.engine.embeddedServer
+import io.ktor.server.jetty.Jetty
+import io.ktor.server.jetty.JettyApplicationEngine
 
-fun main(args: Array<String>): Unit = io.ktor.server.jetty.EngineMain.main(args)
-
-@Suppress("unused") // Referenced in application.conf
-@kotlin.jvm.JvmOverloads
-fun Application.module(testing: Boolean = false) {
-    HttpClient(Apache) {
-        install(JsonFeature) {
-            serializer = GsonSerializer()
+fun main() {
+    val server: JettyApplicationEngine = embeddedServer(Jetty, port = 8082) {
+        routing {
+            get("/") {
+                call.respondText("Hello World!", ContentType.Text.Plain)
+            }
         }
     }
-    runBlocking {
-        // Sample for making a HTTP Client request
-        /*
-        val message = client.post<JsonSampleClass> {
-            url("http://127.0.0.1:8080/path/to/endpoint")
-            contentType(ContentType.Application.Json)
-            body = JsonSampleClass(hello = "world")
-        }
-        */
-    }
-
-    install(ContentNegotiation) {
-        jackson {
-            enable(SerializationFeature.INDENT_OUTPUT)
-        }
-    }
-
-    routing {
-        get("/") {
-            call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
-        }
-
-        get("/json/jackson") {
-            call.respond(mapOf("hello" to "world"))
-        }
-    }
+    server.start(wait = true)
 }
-
-data class JsonSampleClass(val hello: String)
-
