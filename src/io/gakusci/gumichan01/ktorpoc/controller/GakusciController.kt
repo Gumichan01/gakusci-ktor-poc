@@ -20,8 +20,8 @@ class GakusciController {
         val query: String? = call.request.queryParameters[queryKey]
         println("query value $query")
 
-        if (query == null) {
-            call.respond(HttpStatusCode.BadRequest)
+        if (query.isNullOrBlank()) {
+            call.respond(HttpStatusCode.BadRequest, "Bad request: no query text provided")
         } else {
             val entries: List<DocumentEntry> = SearchAggregator().search(query)
             call.respond(entries)
