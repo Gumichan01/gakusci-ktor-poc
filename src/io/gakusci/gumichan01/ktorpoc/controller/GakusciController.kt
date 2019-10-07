@@ -1,7 +1,7 @@
 package io.gakusci.gumichan01.ktorpoc.controller
 
-import io.gakusci.gumichan01.ktorpoc.domain.service.SearchAggregator
 import io.gakusci.gumichan01.ktorpoc.domain.model.DocumentEntry
+import io.gakusci.gumichan01.ktorpoc.domain.service.SearchAggregator
 import io.ktor.application.ApplicationCall
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode

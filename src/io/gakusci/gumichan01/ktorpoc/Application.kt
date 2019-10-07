@@ -5,7 +5,6 @@ import io.gakusci.gumichan01.ktorpoc.controller.GakusciController
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install
-import io.ktor.application.log
 import io.ktor.features.ContentNegotiation
 import io.ktor.jackson.jackson
 import io.ktor.routing.get
