@@ -36,7 +36,6 @@ fun Application.gakusciModule() {
             GakusciController().home(call)
         }
         get("search") {
-            log.info("search in ${Thread.currentThread().id} - ${Thread.currentThread().name}")
             GakusciController().search(call)
         }
     }
