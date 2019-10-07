@@ -1,7 +1,7 @@
 package io.gakusci.gumichan01.ktorpoc.domain.service
 
-import io.gakusci.gumichan01.springpoc.domain.model.DocumentEntry
 import io.gakusci.gumichan01.ktorpoc.restapi.HalClient
+import io.gakusci.gumichan01.springpoc.domain.model.DocumentEntry
 
 class HalService(private val halClient: HalClient) : IService {
 

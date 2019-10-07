@@ -2,7 +2,6 @@ package io.gakusci.gumichan01.ktorpoc.restapi
 
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
-import kotlinx.coroutines.runBlocking
 
 class HalClient {
 
@@ -11,7 +10,7 @@ class HalClient {
 
     suspend fun search(query: String): List<HalResultEntry> {
         val url = halUrl.format(query)
-        val response: String = client.get<String>(url)
+        val response: String = client.get(url)
         println("=====")
         println(response)
         println("===== END")
