@@ -1,9 +1,13 @@
 package io.gakusci.gumichan01.ktorpoc
 
+import com.fasterxml.jackson.databind.SerializationFeature
 import io.gakusci.gumichan01.ktorpoc.controller.GakusciController
 import io.ktor.application.Application
 import io.ktor.application.call
+import io.ktor.application.install
 import io.ktor.application.log
+import io.ktor.features.ContentNegotiation
+import io.ktor.jackson.jackson
 import io.ktor.routing.get
 import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
@@ -21,6 +25,12 @@ fun main() {
 
 @ExperimentalCoroutinesApi
 fun Application.gakusciModule() {
+    install(ContentNegotiation) {
+        jackson {
+            enable(SerializationFeature.INDENT_OUTPUT)
+        }
+    }
+
     routing {
         get("/") {
             GakusciController().home(call)

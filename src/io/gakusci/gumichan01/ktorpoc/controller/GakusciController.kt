@@ -1,6 +1,7 @@
 package io.gakusci.gumichan01.ktorpoc.controller
 
 import io.gakusci.gumichan01.ktorpoc.domain.service.SearchAggregator
+import io.gakusci.gumichan01.ktorpoc.domain.model.DocumentEntry
 import io.ktor.application.ApplicationCall
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
@@ -22,8 +23,8 @@ class GakusciController {
         if (query == null) {
             call.respond(HttpStatusCode.BadRequest)
         } else {
-            query.run { SearchAggregator().search(this) }
-                .also { call.respondText("search", ContentType.Text.Plain, status = HttpStatusCode.OK) }
+            val entries: List<DocumentEntry> = SearchAggregator().search(query)
+            call.respond(entries)
         }
     }
 }
