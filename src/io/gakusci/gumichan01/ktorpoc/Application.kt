@@ -13,13 +13,23 @@ import io.ktor.server.engine.embeddedServer
 import io.ktor.server.jetty.Jetty
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-fun main() {
+fun main(args: Array<String>) {
+    val watchPaths: List<String> = defineWatchPath(args)
     embeddedServer(
         Jetty,
-        watchPaths = listOf("gakusci-ktor-poc"),
+        watchPaths = watchPaths,
         port = 8080,
         module = Application::gakusciModule
     ).apply { start(wait = true) }
+}
+
+private fun defineWatchPath(args: Array<String>): List<String> {
+    return if (isDebugModeEnabled(args)) listOf("gakusci-ktor-poc") else emptyList()
+}
+
+private fun isDebugModeEnabled(args: Array<String>): Boolean {
+    val debugArg = "-debug"
+    return args.any { s -> s == debugArg }
 }
 
 @ExperimentalCoroutinesApi
