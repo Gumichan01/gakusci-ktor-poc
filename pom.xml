@@ -66,32 +66,12 @@
         </dependency>
         <dependency>
             <groupId>io.ktor</groupId>
-            <artifactId>ktor-client-core</artifactId>
-            <version>${ktor_version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.ktor</groupId>
-            <artifactId>ktor-client-core-jvm</artifactId>
-            <version>${ktor_version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.ktor</groupId>
             <artifactId>ktor-client-apache</artifactId>
             <version>${ktor_version}</version>
         </dependency>
         <dependency>
             <groupId>io.ktor</groupId>
-            <artifactId>ktor-client-json-jvm</artifactId>
-            <version>${ktor_version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.ktor</groupId>
             <artifactId>ktor-client-jackson</artifactId>
-            <version>${ktor_version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.ktor</groupId>
-            <artifactId>ktor-server-core</artifactId>
             <version>${ktor_version}</version>
         </dependency>
         <dependency>
