@@ -17,6 +17,8 @@ class HalClient {
 
     suspend fun search(query: String): List<HalResultEntry> {
         val url = halUrl.format(query)
-        return client.get<HalResponse>(url).response.docs ?: listOf()
+        val entries: List<HalResultEntry> = client.get<HalResponse>(url).response.docs ?: listOf()
+        client.close()
+        return entries
     }
 }
