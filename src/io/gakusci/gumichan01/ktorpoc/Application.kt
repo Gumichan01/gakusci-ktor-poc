@@ -6,12 +6,16 @@ import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.features.ContentNegotiation
+import io.ktor.http.content.default
+import io.ktor.http.content.static
+import io.ktor.http.content.staticRootFolder
 import io.ktor.jackson.jackson
 import io.ktor.routing.get
 import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.jetty.Jetty
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import java.io.File
 
 fun main(args: Array<String>) {
     val watchPaths: List<String> = defineWatchPath(args)
@@ -41,6 +45,11 @@ fun Application.gakusciModule() {
     }
 
     routing {
+
+        static("static") {
+            staticRootFolder = File("resources/static")
+            default("index.html")
+        }
         get("/") {
             GakusciController().home(call)
         }

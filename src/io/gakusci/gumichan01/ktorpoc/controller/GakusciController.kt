@@ -3,15 +3,15 @@ package io.gakusci.gumichan01.ktorpoc.controller
 import io.gakusci.gumichan01.ktorpoc.domain.model.DocumentEntry
 import io.gakusci.gumichan01.ktorpoc.domain.service.SearchAggregator
 import io.ktor.application.ApplicationCall
-import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.response.respond
-import io.ktor.response.respondText
+import io.ktor.response.respondRedirect
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class GakusciController {
     suspend fun home(call: ApplicationCall) {
-        call.respondText("Hello World!", ContentType.Text.Plain, status = HttpStatusCode.OK)
+        val staticPagesRelativesUrl = "/static"
+        call.respondRedirect(staticPagesRelativesUrl)
     }
 
     @ExperimentalCoroutinesApi
