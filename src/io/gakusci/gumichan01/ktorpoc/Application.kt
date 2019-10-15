@@ -54,16 +54,12 @@ fun Application.gakusciModule() {
         })
     }
 
-
     routing {
-
-        static("static") {
+        static("/") {
             staticRootFolder = File("resources/static")
             default("index.html")
         }
-        get("/") {
-            GakusciController().home(call)
-        }
+
         get("search") {
             GakusciController().search(call)
         }

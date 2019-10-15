@@ -12,7 +12,7 @@ class ApplicationTest {
     fun testRoot() {
         withTestApplication({ gakusciModule() }) {
             handleRequest(HttpMethod.Get, "/").apply {
-                assertEquals(HttpStatusCode.Found, response.status())
+                assertEquals(HttpStatusCode.OK, response.status())
             }
         }
     }

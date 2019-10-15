@@ -10,10 +10,6 @@ import io.ktor.thymeleaf.ThymeleafContent
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class GakusciController {
-    suspend fun home(call: ApplicationCall) {
-        val staticPagesRelativesUrl = "/static"
-        call.respondRedirect(staticPagesRelativesUrl)
-    }
 
     @ExperimentalCoroutinesApi
     suspend fun search(call: ApplicationCall) {
