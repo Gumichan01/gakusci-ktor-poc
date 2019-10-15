@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GakuSci search results - POC</title>
+</head>
+<body>
+<div>
+    <h1>Gakusci POC results</h1>
+    <form action="/search">
+        <input id="query" type="text" name="q"/>
+        <input id="search" type="submit"/>
+    </form>
+
+    <div th:each="entry : ${entries}">
+        <p th:text="${entry.label}"></p>
+        <a th:href="${entry.url}" th:text="${entry.url}"></a>
+    </div>
+</div>
+</body>
+</html>

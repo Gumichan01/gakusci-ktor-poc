@@ -14,7 +14,9 @@ import io.ktor.routing.get
 import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.jetty.Jetty
+import io.ktor.thymeleaf.Thymeleaf
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 import java.io.File
 
 fun main(args: Array<String>) {
@@ -43,6 +45,15 @@ fun Application.gakusciModule() {
             enable(SerializationFeature.INDENT_OUTPUT)
         }
     }
+
+    install(Thymeleaf) {
+        setTemplateResolver(ClassLoaderTemplateResolver().apply {
+            prefix = "templates/"
+            suffix = ".html"
+            characterEncoding = "utf-8"
+        })
+    }
+
 
     routing {
 

@@ -6,6 +6,7 @@ import io.ktor.application.ApplicationCall
 import io.ktor.http.HttpStatusCode
 import io.ktor.response.respond
 import io.ktor.response.respondRedirect
+import io.ktor.thymeleaf.ThymeleafContent
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class GakusciController {
@@ -24,7 +25,7 @@ class GakusciController {
             call.respond(HttpStatusCode.BadRequest, "Bad request: no query text provided")
         } else {
             val entries: List<DocumentEntry> = SearchAggregator().search(query)
-            call.respond(entries)
+            call.respond(ThymeleafContent("search", mapOf("entries" to entries)))
         }
     }
 }
