@@ -88,7 +88,7 @@
         <dependency>
             <groupId>io.ktor</groupId>
             <artifactId>ktor-thymeleaf</artifactId>
-            <version>${ktor.version}</version>
+            <version>${ktor_version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
