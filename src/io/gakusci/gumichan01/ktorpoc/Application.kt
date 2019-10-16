@@ -7,6 +7,7 @@ import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.features.ContentNegotiation
 import io.ktor.http.content.default
+import io.ktor.http.content.files
 import io.ktor.http.content.static
 import io.ktor.http.content.staticRootFolder
 import io.ktor.jackson.jackson
@@ -57,6 +58,7 @@ fun Application.gakusciModule() {
     routing {
         static("/") {
             staticRootFolder = File("resources/static")
+            files("js")
             default("index.html")
         }
 
